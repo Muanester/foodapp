@@ -1,3 +1,4 @@
+import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
 import cn from "clsx";
 import { Fragment } from "react";
@@ -13,22 +14,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-between flex-row w-full my-5 px-5">
-        <View className="flex-start">
-          <Text className="small-bold text-primary">DELIVER TO</Text>
-          <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
-            <Text className="paragraph-bold text-dark-100">Nairobi</Text>
-            <Image
-              source={images.arrowDown}
-              className="size-3"
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        </View>
-
-        <Text>Cart</Text>
-      </View>
-
       <FlatList
         data={offers}
         renderItem={({ item, index }) => {
@@ -77,6 +62,23 @@ export default function Index() {
           );
         }}
         contentContainerClassName="pb-28 px-5"
+        ListHeaderComponent={() => (
+          <View className="flex-between flex-row w-full my-5">
+            <View className="flex-start">
+              <Text className="small-bold text-primary">DELIVER TO</Text>
+              <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
+                <Text className="paragraph-bold text-dark-100">Nairobi</Text>
+                <Image
+                  source={images.arrowDown}
+                  className="size-3"
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
+
+            <CartButton />
+          </View>
+        )}
       />
     </SafeAreaView>
   );
